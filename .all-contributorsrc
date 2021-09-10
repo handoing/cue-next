@@ -1,0 +1,25 @@
+{
+  "projectName": "cue-next",
+  "projectOwner": "handoing",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "handoing",
+      "name": "Double Han",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9876343?v=4",
+      "profile": "https://twitter.com/iiiiiii7",
+      "contributions": [
+        "blog",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
