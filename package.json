@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:all:esm": "pnpm build:esm --filter 'reactive' --filter 'babel*'",
+    "build:all:cjs": "pnpm build:cjs --filter 'reactive' --filter 'babel*'",
+    "clean": "rm -rf node_modules && pnpm clean --filter 'reactive' --filter 'babel*'",
+    "test": "pnpm build:all:cjs && jest",
+    "lint": "eslint --format codeframe --ext .js packages/*/src/**",
+    "lint:fix": "eslint --fix --ext .js packages/*/src/**",
+    "contributors:init": "all-contributors init",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
+  },
+  "engines": {
+    "node": ">=14.17.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
+    }
+  },
+  "dependencies": {
+    "all-contributors-cli": "^6.20.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "jest": "^27.1.1",
+    "prettier": "^2.4.0"
+  }
+}
