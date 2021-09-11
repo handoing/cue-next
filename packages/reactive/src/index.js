@@ -6,7 +6,7 @@ function detectCircularity(token) {
   }
 }
 
-function reactive(value) {
+export function reactive(value) {
   const subscribers = [];
 
   const self = function (...args) {
@@ -53,7 +53,7 @@ function reactive(value) {
   return self;
 }
 
-function computed(fn) {
+export function computed(fn) {
   const self = reactive();
   const computationToken = [runComputed];
 
@@ -77,7 +77,3 @@ function computed(fn) {
   }
 }
 
-module.exports = {
-  reactive,
-  computed,
-};

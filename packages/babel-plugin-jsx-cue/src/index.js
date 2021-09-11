@@ -1,17 +1,7 @@
 import SyntaxJSX from "@babel/plugin-syntax-jsx";
-
-function transformJSX(path, { opts }) {
-  console.log(path);
-}
-
-function preProcess(path) {
-  console.log(path);
-}
-
-function postProcess(path) {
-  console.log(path);
-}
-
+import { transformJSX } from "./transform";
+import postprocess from "./postprocess";
+import preprocess from "./preprocess";
 
 export default () => {
   return {
@@ -21,8 +11,8 @@ export default () => {
       JSXElement: transformJSX,
       JSXFragment: transformJSX,
       Program: {
-        enter: preProcess,
-        exit: postProcess
+        enter: preprocess,
+        exit: postprocess
       }
     }
   };

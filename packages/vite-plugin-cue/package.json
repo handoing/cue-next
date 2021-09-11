@@ -1,0 +1,20 @@
+{
+  "name": "vite-plugin-cue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.cjs.js",
+  "scripts": {
+    "build:esm": "esbuild ./src/index.js --bundle --format=esm --minify --outfile=./dist/index.esm.js --platform=node",
+    "build:cjs": "esbuild ./src/index.js --bundle --format=cjs --minify --outfile=./dist/index.cjs.js --platform=node",
+    "watch": "esbuild ./src/index.js --bundle --format=esm --watch --outfile=./dist/index.esm.js --platform=node",
+    "clean": "rm -rf node_modules dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "babel-preset-cue": "workspace:^1.0.0",
+    "esbuild": "^0.12.26"
+  }
+}

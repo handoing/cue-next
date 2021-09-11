@@ -1,0 +1,23 @@
+{
+  "name": "count",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^2.5.6",
+    "vite-plugin-cue": "workspace:^1.0.0"
+  },
+  "dependencies": {
+    "cue": "workspace:^1.0.0",
+    "reactive": "workspace:^1.0.0"
+  }
+}

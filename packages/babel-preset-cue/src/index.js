@@ -1,24 +1,13 @@
 const jsxTransform = require("babel-plugin-jsx-cue");
 
-module.exports = function (context, options = {}) {
+export default (context, options = {}) => {
   const plugins = [
     [
       jsxTransform,
       Object.assign(
         {
           moduleName: "cue",
-          builtIns: [
-            "For",
-            "Show",
-            "Switch",
-            "Match",
-            "Suspense",
-            "SuspenseList",
-            "Portal",
-            "Index",
-            "Dynamic",
-            "ErrorBoundary"
-          ],
+          builtIns: [],
           contextToCustomElements: true,
           wrapConditionals: true,
           generate: "dom"

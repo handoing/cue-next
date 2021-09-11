@@ -2,7 +2,7 @@
   "name": "reactive",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.esm.js",
   "scripts": {
     "build:esm": "esbuild ./src/index.js --bundle --format=esm --minify --outfile=./dist/index.esm.js",
     "build:cjs": "esbuild ./src/index.js --bundle --format=cjs --minify --outfile=./dist/index.cjs.js",
