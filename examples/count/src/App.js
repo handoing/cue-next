@@ -1,4 +1,5 @@
 import { reactive } from "reactive";
+import './App.css';
 
 const App = () => {
   const count = reactive(0);
