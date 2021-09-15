@@ -16,6 +16,17 @@ export function createComponent(component) {
   return node;
 }
 
+export function defineWebComponents(name, component) {
+  customElements.define(name, class extends HTMLElement {
+    constructor() {
+      super();
+      const shadow = this.attachShadow({ mode: 'open' });
+      render(createComponent(component), shadow);
+    }
+  });
+  return component;
+}
+
 export function template(tpl) {
   const t = document.createElement("template");
   t.innerHTML = tpl;
