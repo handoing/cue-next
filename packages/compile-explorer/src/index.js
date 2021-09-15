@@ -40,7 +40,7 @@ const App = () => {
 };
 
 export default App;`,
-  language: 'html',
+  language: 'javascript',
   wordWrap: 'bounded',
   ...sharedEditorOptions,
 });
