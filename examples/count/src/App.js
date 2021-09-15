@@ -1,5 +1,5 @@
 import { reactive } from "reactive";
-import './App.css';
+import style from './App.css';
 
 const App = () => {
   const count = reactive(0);
@@ -11,6 +11,7 @@ const App = () => {
   };
   return (
     <>
+      <style>{style}</style>
       <button type="button" onClick={decrement}> - </button>
       <span>{count()}</span>
       <button type="button" onClick={increment}> + </button>

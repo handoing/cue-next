@@ -23,6 +23,10 @@ export function template(tpl) {
 }
 
 export function insert(dom, reactive) {
+  if (typeof reactive === 'string') {
+    dom.innerHTML = reactive;
+    return;
+  }
   function _insert(value) {
     const t = typeof value;
     if (t === "string" || t === "number") {

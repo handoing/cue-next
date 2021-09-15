@@ -16,6 +16,8 @@ export default function cuePlugin(options = {}) {
 
       const { code, map } = await transformAsync(source, babelOptions);
 
+      options.debug && console.log(code);
+
       return { code, map };
     },
   };

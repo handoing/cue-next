@@ -6,10 +6,15 @@
 ## Progress
 - [x] JSX
 - [x] 事件绑定
-- [ ] 组件化
+- [x] 组件化
 - [ ] 生命周期
-- [ ] Web components
+- [x] Web components
 - [ ] SSR
+
+## Problem
+- [ ] props
+- [ ] 条件判断
+- [ ] 动画
 
 ## Contributors ✨
 
