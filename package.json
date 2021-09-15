@@ -4,7 +4,8 @@
     "packages/*"
   ],
   "scripts": {
-    "start:count": "pnpm build:all:esm && pnpm start --filter count",
+    "start:count": "pnpm build:all && pnpm start --filter count",
+    "start:compile-explorer": "pnpm build:all && pnpm start --filter 'compile-explorer'",
     "build:all": "pnpm build:all:esm && pnpm build:all:cjs",
     "build:all:esm": "pnpm build:esm --filter 'cue' --filter 'vite-plugin-cue' --filter 'reactive' --filter 'babel*'",
     "build:all:cjs": "pnpm build:cjs --filter 'cue' --filter 'vite-plugin-cue' --filter 'reactive' --filter 'babel*'",

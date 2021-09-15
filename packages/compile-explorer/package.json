@@ -1,0 +1,23 @@
+{
+  "name": "compile-explorer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^2.5.6"
+  },
+  "dependencies": {
+    "babel-preset-cue": "workspace:^1.0.0",
+    "beautify": "^0.0.8",
+    "monaco-editor": "^0.27.0"
+  }
+}
