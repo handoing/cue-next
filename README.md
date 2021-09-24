@@ -10,16 +10,16 @@
 
 面向未来指对Web components的支持。
 
-多框架兼容式指基于Cue的组件可方便的与当下流行框架（React、Vue等）结合使用。
+多框架兼容式指基于cue的组件可方便的与当下流行框架（React、Vue等）结合使用。
 
 确切的说，可与任何可操作DOM的框架结合使用，因为cue的组件打包后本质就是一个DOM元素。
 
-基于jsx并且无虚拟DOM，Cue注重编译，少量的runtime代码。
+基于jsx并且无虚拟DOM，cue注重编译，少量的runtime代码。
 
 ## 特点
 
 - 基于jsx
-- 无虚拟DOM
+- 无虚拟DOM，无需diff
 - less runtime
 - 组件支持任意dom框架及Web components
 
@@ -91,9 +91,9 @@ export default App;
 
 1.环境基于nodejs v14.17.5
 
-2.包管理工具使用pnpm
+2.包管理工具使用[pnpm](https://pnpm.io/)
 
-3.采用monorepo管理多项目
+3.采用monorepo管理项目
 
 4.`packages/`
 ```
