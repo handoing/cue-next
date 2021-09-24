@@ -8,6 +8,16 @@
 
 ## 介绍
 
+面向未来指对Web components的支持。
+
+多框架兼容式指基于Cue的组件可方便的与当下流行框架（React、Vue等）结合使用。
+
+确切的说，可与任何可操作DOM的框架结合使用，因为cue的组件打包后本质就是一个DOM元素。
+
+基于jsx并且无虚拟DOM，Cue注重编译，少量的runtime代码。
+
+## 特点
+
 - 基于jsx
 - 无虚拟DOM
 - less runtime
@@ -75,6 +85,24 @@ const App = () => {
 };
 
 export default App;
+```
+
+## 开发
+
+1.环境基于nodejs v14.17.5
+
+2.包管理工具使用pnpm
+
+3.采用monorepo管理多项目
+
+4.`packages/`
+```
+- babel-plugin-jsx-cue // babel的插件，用来将jsx组件编译为原生dom操作代码
+- babel-preset-cue // babel的预设，内置了babel-plugin-jsx-cue插件
+- compile-explorer // 代码在线编译浏览
+- cue // cue的runtime代码
+- reactive // 数据响应式
+- vite-plugin-cue // cue的vite插件
 ```
 
 ## 进度
