@@ -1,9 +1,82 @@
 # cue-next
+
+面向未来的多框架兼容式框架
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## Progress
+## 介绍
+
+- 基于jsx
+- 无虚拟DOM
+- 组件支持任意dom框架及Web components
+
+## 例子
+
+示例代码见`examples/count`
+
+`index.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <count-box></count-box>
+
+  <script src="/src/index.js" type="module"></script>
+</body>
+</html>
+```
+
+`/src/index.js`
+```js
+import { render, defineWebComponents } from "cue";
+import App from "./App";
+
+// 渲染组件
+render(<App />, document.getElementById("root"));
+
+// 创建Web components
+defineWebComponents('count-box', App);
+
+console.log('获取App的DOM节点：', App());
+```
+
+`/src/App.js`
+```js
+import { reactive } from "reactive";
+import style from './App.css';
+
+const App = () => {
+  const count = reactive(0);
+  const increment = () => {
+    count(count() + 1);
+  };
+  const decrement = () => {
+    count(count() - 1);
+  };
+  return (
+    <>
+      <style>{style}</style>
+      <button type="button" onClick={decrement}> - </button>
+      <span>{count()}</span>
+      <button type="button" onClick={increment}> + </button>
+    </>
+  );
+};
+
+export default App;
+```
+
+## 进度
 - [x] JSX
 - [x] 事件绑定
 - [x] 组件化
@@ -11,7 +84,7 @@
 - [x] Web components
 - [ ] SSR
 
-## Problem
+## 问题
 - [ ] props
 - [ ] 条件判断
 - [ ] 动画
