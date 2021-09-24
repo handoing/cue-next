@@ -10,6 +10,7 @@
 
 - 基于jsx
 - 无虚拟DOM
+- less runtime
 - 组件支持任意dom框架及Web components
 
 ## 例子
@@ -86,7 +87,7 @@ export default App;
 
 ## 问题
 - [ ] props
-- [ ] 条件判断
+- [ ] 控制流
 - [ ] 动画
 
 ## Contributors ✨
