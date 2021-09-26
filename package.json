@@ -5,7 +5,11 @@
   ],
   "scripts": {
     "start:count": "pnpm build:all && pnpm start --filter count",
+    "start:vue": "pnpm dev --filter vue",
+    "start:react": "pnpm dev --filter react",
     "start:compile-explorer": "pnpm build:all && pnpm start --filter 'compile-explorer'",
+    "build:count": "pnpm build:all && pnpm build --filter count",
+    "build:count:web-components": "pnpm build:all && pnpm build:component --filter count",
     "build:all": "pnpm build:all:esm && pnpm build:all:cjs",
     "build:all:esm": "pnpm build:esm --filter 'cue' --filter 'vite-plugin-cue' --filter 'reactive' --filter 'babel*'",
     "build:all:cjs": "pnpm build:cjs --filter 'cue' --filter 'vite-plugin-cue' --filter 'reactive' --filter 'babel*'",

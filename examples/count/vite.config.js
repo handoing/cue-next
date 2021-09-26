@@ -1,11 +1,20 @@
 import { defineConfig } from "vite";
 import cuePlugin from "vite-plugin-cue";
+import path from 'path';
+console.log(process.env.BUILD_TYPE)
+const isBuildComponent = process.env.BUILD_TYPE === 'component'
 
 export default defineConfig({
-  plugins: [ cuePlugin({ debug: false }) ],
+  plugins: [ cuePlugin() ],
   build: {
     target: "esnext",
     polyfillDynamicImport: false,
-    minify: false
+    minify: false,
+    ...(isBuildComponent ? {
+      lib: {
+        entry: path.resolve(__dirname, 'src/App.js'),
+        name: 'App'
+      }
+    } : null),
   },
 });

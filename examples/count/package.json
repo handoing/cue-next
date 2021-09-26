@@ -7,6 +7,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "build:component": "BUILD_TYPE=component vite build",
     "serve": "vite preview"
   },
   "keywords": [],

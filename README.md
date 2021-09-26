@@ -87,6 +87,95 @@ const App = () => {
 export default App;
 ```
 
+#### Vue
+
+示例代码见`examples/vue`
+
+```html
+<script setup>
+import { getCurrentInstance, onMounted } from 'vue';
+import Count from './count.es.js';
+const { ctx } = getCurrentInstance();
+onMounted(() => {
+  const countNode = Count({
+    onIncrement() {
+      console.log('Vue component increment');
+    },
+    onDecrement() {
+      console.log('Vue component decrement');
+    }
+  });
+  ctx.$el.appendChild(countNode);
+});
+</script>
+
+<template>
+  <div></div>
+</template>
+```
+
+#### React
+
+示例代码见`examples/react`
+
+```js
+import React, { useState, useEffect, useRef } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import Count from './Count.es.js'
+
+function useCueComponent(CueComponent) {
+  const container = useRef(null)
+  useEffect(() => {
+    container.current.appendChild(CueComponent())
+  })
+  return container
+}
+
+function App() {
+  const [count, setCount] = useState(0)
+  const countContainer = useCueComponent(Count)
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>Hello Vite + React!</p>
+        <p>
+          <button type="button" onClick={() => setCount((count) => count + 1)}>
+            count is: {count}
+          </button>
+        </p>
+        <p>
+          Edit <code>App.jsx</code> and save to test HMR updates.
+        </p>
+        <p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+          {' | '}
+          <a
+            className="App-link"
+            href="https://vitejs.dev/guide/features.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Vite Docs
+          </a>
+        </p>
+        <div ref={countContainer}></div>
+      </header>
+    </div>
+  )
+}
+
+export default App
+```
+
 ## 开发
 
 1.环境基于nodejs v14.17.5
