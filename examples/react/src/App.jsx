@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import Count from './Count.es.js'
+import Count from './count.es.js'
 
 function useCueComponent(CueComponent) {
   const container = useRef(null)

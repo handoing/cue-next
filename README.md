@@ -20,7 +20,7 @@
 
 - 基于jsx
 - 无虚拟DOM，无需diff
-- less runtime
+- runtime less
 - 组件支持任意dom框架及Web components
 
 ## 例子
@@ -94,7 +94,7 @@ export default App;
 ```html
 <script setup>
 import { getCurrentInstance, onMounted } from 'vue';
-import Count from './count.es.js';
+import Count from './count.es.js'; // 打包后的count组件
 const { ctx } = getCurrentInstance();
 onMounted(() => {
   const countNode = Count({
@@ -122,7 +122,7 @@ onMounted(() => {
 import React, { useState, useEffect, useRef } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import Count from './Count.es.js'
+import Count from './count.es.js' // 打包后的count组件
 
 function useCueComponent(CueComponent) {
   const container = useRef(null)
