@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import cuePlugin from "vite-plugin-cue";
 import path from 'path';
-console.log(process.env.BUILD_TYPE)
+
 const isBuildComponent = process.env.BUILD_TYPE === 'component'
 
 export default defineConfig({
