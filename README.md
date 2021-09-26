@@ -16,6 +16,11 @@
 
 基于jsx并且无虚拟DOM，cue注重编译，少量的runtime代码。
 
+## 灵感来源
+
+- [`solid`](https://github.com/solidjs/solid) - A declarative, efficient, and flexible JavaScript library for building user interfaces.
+- [`lit`](https://github.com/lit/lit) - Lit is a simple library for building fast, lightweight web components.
+
 ## 特点
 
 - 基于jsx
