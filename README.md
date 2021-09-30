@@ -211,6 +211,8 @@ export default App
 
 ## 问题
 - [ ] 动画
+- [ ] computed
+- [ ] insert types
 
 ## Contributors ✨
 

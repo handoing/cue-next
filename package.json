@@ -8,6 +8,7 @@
     "start:vue": "pnpm dev --filter vue",
     "start:react": "pnpm dev --filter react",
     "start:compile-explorer": "pnpm build:all && pnpm start --filter 'compile-explorer'",
+    "start:uptime": "pnpm build:all && pnpm start --filter uptime",
     "build:count": "pnpm build:all && pnpm build --filter count",
     "build:count:web-components": "pnpm build:all && pnpm build:component --filter count",
     "build:all": "pnpm build:all:esm && pnpm build:all:cjs",

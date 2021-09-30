@@ -79,3 +79,6 @@ export function memo(fn) {
   }
 }
 
+export function effect(fn) {
+  return fn();
+}

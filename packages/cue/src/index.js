@@ -1,5 +1,5 @@
-import { reactive, memo } from 'reactive';
-export { reactive, memo };
+import { reactive, memo, effect } from 'reactive';
+export { reactive, memo, effect };
 
 const $$EVENTS = "_$_DELEGATE";
 
@@ -7,8 +7,10 @@ const mountedQueue = [];
 
 export function render(node, parentNode) {
   parentNode.appendChild(node);
-  const mount = mountedQueue.shift();
-  mount();
+  if (mountedQueue.length > 0) {
+    const mount = mountedQueue.shift();
+    mount();
+  }
 }
 
 export function onMounted(fn = () => {}) {
@@ -64,20 +66,38 @@ export function insert(dom, reactive, replaceDom) {
   if (typeof reactive === 'function') {
     const _memo = memo(reactive);
     let _dom = _memo();
-
-    _memo.subscribe((node) => {
-      _dom.parentNode.replaceChild(node, _dom);
-      _dom = node;
-    }, false);
-
+    if (typeof _dom === 'string' || typeof _dom === 'number') {
+      _dom = document.createTextNode(_dom)
+    }
     if (Array.isArray(_dom)) {
       const fragment = document.createDocumentFragment();
       for (let i = 0; i < _dom.length; i++) {
         fragment.appendChild(_dom[i]);
       }
-      dom.appendChild(fragment);
-      return;
+      _dom = fragment
     }
+
+    _memo.subscribe((value) => {
+      let node = value;
+      if (typeof value === 'string' || typeof value === 'number') {
+        node = document.createTextNode(value)
+      }
+      if (Array.isArray(value)) {
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < value.length; i++) {
+          fragment.appendChild(value[i]);
+        }
+        node = fragment
+      }
+      if (_dom instanceof DocumentFragment) {
+        // _dom.innerHTML = '';
+        // _dom.appendChild(node);
+      } else {
+        _dom.parentNode.replaceChild(node, _dom);
+      }
+      _dom = node;
+    }, false);
+
     dom.appendChild(_dom);
     return;
   }
