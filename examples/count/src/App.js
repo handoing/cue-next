@@ -1,19 +1,26 @@
-import { reactive } from "reactive";
+import { reactive, onMounted } from "cue";
 import style from './App.css';
 
-const App = (props = {
-  onIncrement: () => {},
-  onDecrement: () => {},
-}) => {
-  const count = reactive(0);
+const useCount = (props) => {
+  const count = reactive(props.count !== undefined ? props.count : 0);
   const increment = () => {
     count(count() + 1);
-    props.onIncrement();
+    props.onIncrement && props.onIncrement();
   };
   const decrement = () => {
     count(count() - 1);
-    props.onDecrement();
+    props.onDecrement && props.onDecrement();
   };
+  return [ count, increment, decrement ];
+}
+
+const App = (props = {}) => {
+  const [ count, increment, decrement ] = useCount(props);
+
+  onMounted(() => {
+    console.log('count mounted!');
+  });
+
   return (
     <div>
       <style>{style}</style>

@@ -100,6 +100,9 @@ importers:
   packages/cue:
     specifiers:
       esbuild: ^0.12.26
+      reactive: workspace:^1.0.0
+    dependencies:
+      reactive: link:../reactive
     devDependencies:
       esbuild: 0.12.26
 

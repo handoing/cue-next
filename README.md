@@ -203,13 +203,13 @@ export default App
 - [x] JSX
 - [x] 事件绑定
 - [x] 组件化
-- [ ] 生命周期
+- [x] props
+- [x] 控制流
+- [x] 生命周期
 - [x] Web components
 - [ ] SSR
 
 ## 问题
-- [ ] props
-- [ ] 控制流
 - [ ] 动画
 
 ## Contributors ✨

@@ -13,6 +13,8 @@ export function reactive(value) {
     return args.length ? write(args[0]) : read();
   };
 
+  self['isReactive'] = true;
+
   self['subscribe'] = (subscriber, immediate) => {
     if (subscribers.indexOf(subscriber) === -1) {
       subscribers.push(subscriber);
@@ -53,7 +55,7 @@ export function reactive(value) {
   return self;
 }
 
-export function computed(fn) {
+export function memo(fn) {
   const self = reactive();
   const computationToken = [runComputed];
 

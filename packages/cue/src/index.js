@@ -1,11 +1,22 @@
+import { reactive, memo } from 'reactive';
+export { reactive, memo };
+
 const $$EVENTS = "_$_DELEGATE";
+
+const mountedQueue = [];
 
 export function render(node, parentNode) {
   parentNode.appendChild(node);
+  const mount = mountedQueue.shift();
+  mount();
 }
 
-export function createComponent(component) {
-  const node = component();
+export function onMounted(fn = () => {}) {
+  mountedQueue.push(fn);
+}
+
+export function createComponent(component, props) {
+  const node = component(props);
   if (Array.isArray(node)) {
     const fragment = document.createDocumentFragment();
     for (let i = 0; i < node.length; i++) {
@@ -21,7 +32,7 @@ export function defineWebComponents(name, component) {
     constructor() {
       super();
       const shadow = this.attachShadow({ mode: 'open' });
-      render(createComponent(component), shadow);
+      render(component, shadow);
     }
   });
   return component;
@@ -33,19 +44,53 @@ export function template(tpl) {
   return t.content.firstChild;
 }
 
-export function insert(dom, reactive) {
-  if (typeof reactive === 'string') {
-    dom.innerHTML = reactive;
+export function insert(dom, reactive, replaceDom) {
+  if (reactive.isReactive) {
+    function _insert(value) {
+      const t = typeof value;
+      if (t === "string" || t === "number") {
+        if (t === "number") value = value.toString();
+        if (dom.lastChild) {
+          dom.lastChild.parentNode.replaceChild(document.createTextNode(value), dom.lastChild);
+        } else {
+          dom.appendChild(document.createTextNode(value));
+        }
+      }
+    }
+    reactive.subscribe(_insert, true);
     return;
   }
-  function _insert(value) {
-    const t = typeof value;
-    if (t === "string" || t === "number") {
-      if (t === "number") value = value.toString();
-      dom.innerText = value;
+
+  if (typeof reactive === 'function') {
+    const _memo = memo(reactive);
+    let _dom = _memo();
+
+    _memo.subscribe((node) => {
+      _dom.parentNode.replaceChild(node, _dom);
+      _dom = node;
+    }, false);
+
+    if (Array.isArray(_dom)) {
+      const fragment = document.createDocumentFragment();
+      for (let i = 0; i < _dom.length; i++) {
+        fragment.appendChild(_dom[i]);
+      }
+      dom.appendChild(fragment);
+      return;
+    }
+    dom.appendChild(_dom);
+    return;
+  }
+
+  if (replaceDom) {
+    replaceDom.parentNode.replaceChild(document.createTextNode(reactive), replaceDom);
+  } else {
+    if (dom.lastChild) {
+      dom.lastChild.parentNode.replaceChild(document.createTextNode(reactive), dom.lastChild);
+    } else {
+      dom.appendChild(document.createTextNode(reactive));
     }
   }
-  reactive.subscribe(_insert, true);
 }
 
 export function addEventListener(node, name, handler, delegate) {

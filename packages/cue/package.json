@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "esbuild": "^0.12.26"
+  },
+  "dependencies": {
+    "reactive": "workspace:^1.0.0"
   }
 }
